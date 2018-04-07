@@ -15,13 +15,14 @@ def run_game():
 
     screen = pygame.display.set_mode((
         ai_settings.screen_width, ai_settings.screen_height))
-    ship = Ship(screen)
+    ship = Ship(ai_settings, screen)
 
     pygame.display.set_caption("外星人入侵")
 
     # 开始游戏的主循环
     while True:
-        gf.check_event()
-        gf.update_screen()
+        gf.check_events(ship)
+        ship.update()
+        gf.update_screen(ai_settings, screen, ship)
 
 run_game()
